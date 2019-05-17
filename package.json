@@ -1,0 +1,22 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "description": "Restaurants Microservice compose of Express and MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/restaurantscruisearq2019/Restaurants.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/restaurantscruisearq2019/Restaurants/issues"
+  },
+  "homepage": "https://github.com/restaurantscruisearq2019/Restaurants#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
