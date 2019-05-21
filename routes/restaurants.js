@@ -21,7 +21,7 @@ module.exports = app => {
       });
   });
 
-  app.get("/restaurants/add", (req, res) => {
+  app.post("/restaurants/add", (req, res) => {
     const data = req.query;
     new Restaurant(data)
       .save()

@@ -1,0 +1,134 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for Restaurants
+  description: Nodejs + MongoDB
+  license:
+    name: Proyecto Restaurantes
+host: 192.168.99.101:3000
+basePath: /restaurants
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /restaurants:
+    post:
+      summary: Creates a new restaurant
+      operationId: createRestaurant
+      parameters:
+        - name: restaurant
+          in: body
+          required: true
+          description: Resturant Object
+          schema:
+            $ref: '#/definitions/Restaurant'
+      responses:
+        '200':
+          description: Created
+        '406':
+          description: Bad Request
+    
+    get:
+      summary: Returns all restaurants
+      operationId: getAllRestaurants
+      responses:
+        '200':
+          description: Ok
+        '406':
+          description: Bad Request
+         
+  /restaurants/{code}:
+    get:
+      summary: Returns a restaurant with the given code
+      operationId: getRestaurantByCode
+      parameters:
+        - name: code
+          in: path
+          description: The code of the restaurant to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+
+    put:
+      summary: Updates a restaurant with the given code
+      operationId: updateRestaurant
+      parameters:
+        - name: code
+          in: path
+          description: The code of the restaurant to be updated
+          required: true
+          type: integer
+        - name: restaurant
+          in: body
+          required: true
+          description: Restaurant Object
+          schema:
+            $ref: '#/definitions/Restaurant'
+         
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+  
+
+    delete:
+      summary: Deletes a restaurant with the given code
+      operationId: deleteRestaurant
+      parameters:
+        - name: code
+          in: path
+          description: The code of the restaurant to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+definitions:
+
+  # Restaurants
+  Restaurant:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      capacity:
+        type: integer
+      isopen:
+        type: boolean
+      menu:
+        type: object
+        properties:
+          type:
+            type: string
+          priceRange:
+            type: string
+
+#Errors
+  #ErrorModel:
+   # type: object
+    #required:
+      #- message
+      #- code
+    #properties:
+     # message:
+      #  type: string
+      #code:
+       # type: number
+      #description:
+       # type: object
