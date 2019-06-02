@@ -23,6 +23,7 @@ module.exports = app => {
 
   app.post("/restaurants/add", (req, res) => {
     const data = req.query;
+
     new Restaurant(data)
       .save()
       .then(restaurant => {
@@ -39,7 +40,7 @@ module.exports = app => {
       });
   });
 
-  app.get("/restaurants/update/:id", (req, res) => {
+  app.put("/restaurants/update/:id", (req, res) => {
     const updateDetails = req.query;
     const restaurantId = req.params.id;
 
@@ -58,7 +59,7 @@ module.exports = app => {
       });
   });
 
-  app.get("/restaurants/delete/:id", (req, res) => {
+  app.delete("/restaurants/delete/:id", (req, res) => {
     const restaurantId = req.params.id;
 
     Restaurant.findByIdAndDelete(restaurantId)

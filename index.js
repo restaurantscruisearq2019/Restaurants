@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://mongodb:27017/Restaurant");
+//mongoose.connect("mongodb://mongodb:27017/Restaurant");
+mongoose.connect("mongodb://localhost:27017/Restaurant");
 
 require("./models/Restaurant");
 
