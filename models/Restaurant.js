@@ -7,7 +7,7 @@ const restaurantSchema = new Schema({
   capacity: { type: Number, default: 0 },
   isopen: { type: Boolean, default: false },
   menu: {
-    type: { type: String, default: "" },
+    mType: { type: String, default: "" },
     priceRange: { type: String, default: "" }
   }
 });
