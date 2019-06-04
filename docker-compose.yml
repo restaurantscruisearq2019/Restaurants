@@ -1,0 +1,32 @@
+version: "2"
+services:
+  api:
+    image: arkai93/restaurants-app
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api:/api
+      - /api/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - webappnetwork
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --noauth --smallfiles
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
+
+volumes:
+  mongodata:
