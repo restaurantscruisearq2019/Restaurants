@@ -4,7 +4,7 @@ services:
     image: miacastroco/restaurants
     restart: always
     ports:
-      - "5000:5000"
+      - "5002:5002"
     volumes:
       - ./api:/api
       - /api/node_modules
