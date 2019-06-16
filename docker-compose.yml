@@ -12,6 +12,8 @@ services:
       - mongodb
     networks:
       - webappnetwork
+    environment:
+      WAIT_HOSTS: mongodb:27017
   mongodb:
     image: mongo
     restart: always

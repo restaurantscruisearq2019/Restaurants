@@ -1,8 +1,12 @@
-    FROM node:8
-    WORKDIR /usr/src/app
+FROM node:latest
+WORKDIR /usr/src/app
 
-    COPY package*.json ./
-    RUN npm install
-    COPY . .
-    EXPOSE 5002
-    CMD [ "node", "index.js" ]
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 5002
+
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+
+CMD /wait && node index.js
